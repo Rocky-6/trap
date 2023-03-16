@@ -6,9 +6,12 @@ import (
 )
 
 func mkHihat() {
-	s := smf.New()
-	tr := smf.Track{}
 	clock := smf.MetricTicks(96)
+	s := smf.New()
+	s.TimeFormat = clock
+	tr := smf.Track{}
+	tr.Add(0, smf.MetaMeter(4, 4))
+	tr.Add(0, smf.MetaTempo(70))
 
 	// start
 	// 1
@@ -84,5 +87,5 @@ func mkHihat() {
 	// end
 	tr.Close(0)
 	s.Add(tr)
-	s.WriteFile("/home/rocky/trap/track/hihat.mid")
+	s.WriteFile("/home/rocky/trap/hihat.mid")
 }
