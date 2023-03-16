@@ -6,8 +6,8 @@ import (
 )
 
 func mkHihat() {
-	s := mkSMF()
-	tr := initTrack()
+	s := smf.New()
+	tr := smf.Track{}
 	clock := smf.MetricTicks(96)
 
 	// start
