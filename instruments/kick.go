@@ -5,7 +5,7 @@ import (
 	"gitlab.com/gomidi/midi/v2/smf"
 )
 
-func mkKick() {
+func MkKick(path string) {
 	clock := smf.MetricTicks(96)
 	s := smf.New()
 	s.TimeFormat = clock
@@ -39,5 +39,5 @@ func mkKick() {
 	// end
 	tr.Close(0)
 	s.Add(tr)
-	s.WriteFile("/home/rocky/trap/kick.mid")
+	s.WriteFile(path + "/kick.mid")
 }

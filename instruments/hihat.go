@@ -5,7 +5,7 @@ import (
 	"gitlab.com/gomidi/midi/v2/smf"
 )
 
-func mkHihat() {
+func MkHihat(path string) {
 	clock := smf.MetricTicks(96)
 	s := smf.New()
 	s.TimeFormat = clock
@@ -87,5 +87,5 @@ func mkHihat() {
 	// end
 	tr.Close(0)
 	s.Add(tr)
-	s.WriteFile("/home/rocky/trap/hihat.mid")
+	s.WriteFile(path + "/hihat.mid")
 }
