@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+
+	"github.com/Rocky-6/trap/instruments"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	flag.Parse()
+	path := flag.Arg(0)
+	instruments.MkKick(path)
+	instruments.MkClap(path)
+	instruments.MkHihat(path)
 }
