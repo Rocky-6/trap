@@ -9,7 +9,7 @@ import (
 	"gitlab.com/gomidi/midi/v2/smf"
 )
 
-func mkChord(path string, key string, cp [4]string) {
+func MkChord(path string, key string, cp [4]string) {
 	clock := smf.MetricTicks(96)
 	s := smf.New()
 	s.TimeFormat = clock
@@ -20,7 +20,7 @@ func mkChord(path string, key string, cp [4]string) {
 	// start
 	for loop := 0; loop < 3; loop++ {
 		for i := 0; i < 4; i++ {
-			c := chordNote(keyNote(key), cp[i])
+			c := chordNote(keyNoteChord(key), cp[i])
 
 			for _, v := range c {
 				tr.Add(0, midi.NoteOn(0, v, 100))
@@ -40,9 +40,9 @@ func mkChord(path string, key string, cp [4]string) {
 	s.WriteFile(path + "/chord.mid")
 }
 
-func chordNote(keyNote uint8, degree_name string) []uint8 {
+func chordNote(keyNoteChord uint8, degree_name string) []uint8 {
 	chord_note := make([]uint8, 3)
-	root := keyNote
+	root := keyNoteChord
 
 	switch true {
 	case check_regexp(`bVII`, degree_name):
@@ -120,7 +120,7 @@ func check_regexp(reg, str string) bool {
 	return r.MatchString(str)
 }
 
-func keyNote(key string) uint8 {
+func keyNoteChord(key string) uint8 {
 	noteNames := [12]string{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"}
 
 	var note uint8

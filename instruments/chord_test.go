@@ -7,5 +7,5 @@ import (
 )
 
 func TestMkChord(t *testing.T) {
-	mkChord("..", "C", database.DispChord())
+	MkChord("..", "C", database.DispChord())
 }
