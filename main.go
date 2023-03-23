@@ -17,4 +17,5 @@ func main() {
 	cp := database.DispChord()
 	instruments.MkBass(path, key, cp)
 	instruments.MkChord(path, key, cp)
+	instruments.MkMelody(path, key)
 }
