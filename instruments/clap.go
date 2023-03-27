@@ -14,20 +14,10 @@ func MkClap(path string) {
 	tr.Add(0, smf.MetaTempo(70))
 
 	// start
-	// 1
 	tr.Add(clock.Ticks64th()*16, midi.NoteOn(0, midi.C(5), 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
 	tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(5), 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
-
-	// loop
-	for loop := 0; loop < 4; loop++ {
-		tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(5), 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
-		tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(5), 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
-	}
-
 	// end
 	tr.Close(0)
 	s.Add(tr)
