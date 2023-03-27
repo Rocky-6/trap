@@ -15,17 +15,17 @@ func MkClap(path string) {
 
 	// start
 	// 1
-	tr.Add(clock.Ticks64th()*16, midi.NoteOn(0, midi.C(3), 100))
-	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(3)))
-	tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(3), 100))
-	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(3)))
+	tr.Add(clock.Ticks64th()*16, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
 
 	// loop
 	for loop := 0; loop < 4; loop++ {
-		tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(3), 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(3)))
-		tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(3), 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(3)))
+		tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(5), 100))
+		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+		tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(5), 100))
+		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
 	}
 
 	// end
