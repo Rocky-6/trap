@@ -18,23 +18,22 @@ func MkChord(path string, key string, cp [4]string) {
 	tr.Add(0, smf.MetaTempo(70))
 
 	// start
-	for loop := 0; loop < 3; loop++ {
-		for i := 0; i < 4; i++ {
-			c := chordNote(keyNoteChord(key), cp[i])
+	for i := 0; i < 4; i++ {
+		c := chordNote(keyNoteChord(key), cp[i])
 
-			for _, v := range c {
-				tr.Add(0, midi.NoteOn(0, v, 100))
-			}
+		for _, v := range c {
+			tr.Add(0, midi.NoteOn(0, v, 100))
+		}
 
-			for j, v := range c {
-				if j == 0 {
-					tr.Add(clock.Ticks4th()*2, midi.NoteOff(0, v))
-				} else {
-					tr.Add(0, midi.NoteOff(0, v))
-				}
+		for j, v := range c {
+			if j == 0 {
+				tr.Add(clock.Ticks4th()*2, midi.NoteOff(0, v))
+			} else {
+				tr.Add(0, midi.NoteOff(0, v))
 			}
 		}
 	}
+
 	tr.Close(0)
 	s.Add(tr)
 	s.WriteFile(path + "/chord.mid")
