@@ -42,6 +42,33 @@ func MkHihat(path string) {
 		tr.Add(0, midi.NoteOn(0, midi.C(5), 100))
 		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
 	}
+	for i := 0; i < 4; i++ {
+		tr.Add(clock.Ticks64th()*3, midi.NoteOn(0, midi.C(5), 100))
+		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	}
+	tr.Add(clock.Ticks64th()*3, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	for i := 0; i < 4; i++ {
+		tr.Add(0, midi.NoteOn(0, midi.C(5), 100))
+		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	}
+	for i := 0; i < 2; i++ {
+		tr.Add(clock.Ticks64th()*3, midi.NoteOn(0, midi.C(5), 100))
+		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	}
+	for i := 0; i < 4; i++ {
+		tr.Add(clock.Ticks64th()*3, midi.NoteOn(0, midi.C(5), 100))
+		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	}
+	for i := 0; i < 3; i++ {
+		tr.Add(clock.Ticks64th()*3, midi.NoteOn(0, midi.C(5), 100))
+		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	}
+	for i := 0; i < 4; i++ {
+		tr.Add(0, midi.NoteOn(0, midi.C(5), 100))
+		tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	}
+
 	// end
 
 	tr.Close(0)

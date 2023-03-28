@@ -18,6 +18,10 @@ func MkClap(path string) {
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
 	tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(5), 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	tr.Add(clock.Ticks64th()*31, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
 	// end
 	tr.Close(0)
 	s.Add(tr)

@@ -22,6 +22,14 @@ func MkKick(path string) {
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
 	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, midi.C(5), 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	tr.Add(clock.Ticks64th()*7, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	tr.Add(clock.Ticks64th()*23, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
+	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
 	// end
 
 	tr.Close(0)
