@@ -73,7 +73,7 @@ func keyNoteMelody(key string) uint8 {
 
 	for i, noteName := range noteNames {
 		if key == noteName {
-			note = uint8(i) + 24
+			note = uint8(i)
 			break
 		}
 	}

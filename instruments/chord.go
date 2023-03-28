@@ -126,7 +126,7 @@ func keyNoteChord(key string) uint8 {
 
 	for i, noteName := range noteNames {
 		if key == noteName {
-			note = uint8(i) + 72
+			note = uint8(i) + 48
 			break
 		}
 	}
