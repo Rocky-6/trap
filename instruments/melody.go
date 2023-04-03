@@ -20,7 +20,7 @@ func MkMelody(path string, key string) {
 	note := uint8(0)
 	tick := uint32(0)
 	n := byte(69)
-	length := 32
+	length := 16
 
 	for {
 	L:
@@ -73,7 +73,7 @@ func keyNoteMelody(key string) uint8 {
 
 	for i, noteName := range noteNames {
 		if key == noteName {
-			note = uint8(i) + 24
+			note = uint8(i)
 			break
 		}
 	}
