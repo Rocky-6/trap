@@ -11,24 +11,18 @@ func MkKick(path string) {
 	s.TimeFormat = clock
 	tr := smf.Track{}
 	tr.Add(0, smf.MetaMeter(4, 4))
-	tr.Add(0, smf.MetaTempo(70))
+	tr.Add(0, smf.MetaTempo(140))
 
 	// start
 	tr.Add(0, midi.NoteOn(0, midi.C(5), 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
-	tr.Add(clock.Ticks64th()*23, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks4th()*5-clock.Ticks64th(), midi.NoteOn(0, midi.C(5), 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
-	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks4th()*3-clock.Ticks64th(), midi.NoteOn(0, midi.C(5), 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
-	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks4th()*3-clock.Ticks64th(), midi.NoteOn(0, midi.C(5), 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
-	tr.Add(clock.Ticks64th()*7, midi.NoteOn(0, midi.C(5), 100))
-	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
-	tr.Add(clock.Ticks64th()*23, midi.NoteOn(0, midi.C(5), 100))
-	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
-	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, midi.C(5), 100))
-	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
-	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, midi.C(5), 100))
+	tr.Add(clock.Ticks4th()*2+clock.Ticks8th()-clock.Ticks64th(), midi.NoteOn(0, midi.C(5), 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, midi.C(5)))
 	// end
 
