@@ -10,4 +10,5 @@ func TestUnit(t *testing.T) {
 	cp := database.DispChord()
 	MkBass("..", "C", cp)
 	MkChord("..", "C", cp)
+	MkMelody("..", "C")
 }

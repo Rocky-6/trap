@@ -16,61 +16,26 @@ func MkBass(path string, key string, cp [4]string) {
 	tr.Add(0, smf.MetaTempo(70))
 
 	// start
-	// 1
 	c := bassNote(keyNoteBass(key), cp[0])
 	tr.Add(0, midi.NoteOn(0, c, 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-	tr.Add(clock.Ticks64th()*23, midi.NoteOn(0, c, 100))
-	tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
 
-	// 2
-	c = bassNote(keyNoteBass(key), cp[1])
-	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, c, 100))
-	tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, c, 100))
-	tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-
-	// 3
 	c = bassNote(keyNoteBass(key), cp[2])
-	tr.Add(clock.Ticks64th()*7, midi.NoteOn(0, c, 100))
-	tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-	tr.Add(clock.Ticks64th()*23, midi.NoteOn(0, c, 100))
+	tr.Add(clock.Ticks4th()*5-clock.Ticks64th(), midi.NoteOn(0, c, 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
 
-	// 4
-	c = bassNote(keyNoteBass(key), cp[3])
-	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, c, 100))
+	c = bassNote(keyNoteBass(key), cp[0])
+	tr.Add(clock.Ticks4th()*3-clock.Ticks64th(), midi.NoteOn(0, c, 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-	tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, c, 100))
+
+	c = bassNote(keyNoteBass(key), cp[1])
+	tr.Add(clock.Ticks4th()*3-clock.Ticks64th(), midi.NoteOn(0, c, 100))
 	tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-	// loop
-	for loop := 0; loop < 2; loop++ {
-		c = bassNote(keyNoteBass(key), cp[0])
-		tr.Add(clock.Ticks64th()*7, midi.NoteOn(0, c, 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-		tr.Add(clock.Ticks64th()*23, midi.NoteOn(0, c, 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
 
-		c = bassNote(keyNoteBass(key), cp[1])
-		tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, c, 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-		tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, c, 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
+	c = bassNote(keyNoteBass(key), cp[2])
+	tr.Add(clock.Ticks4th()*2+clock.Ticks8th()-clock.Ticks64th(), midi.NoteOn(0, c, 100))
+	tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
 
-		c = bassNote(keyNoteBass(key), cp[2])
-		tr.Add(clock.Ticks64th()*7, midi.NoteOn(0, c, 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-		tr.Add(clock.Ticks64th()*23, midi.NoteOn(0, c, 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-
-		c = bassNote(keyNoteBass(key), cp[3])
-		tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, c, 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-		tr.Add(clock.Ticks64th()*15, midi.NoteOn(0, c, 100))
-		tr.Add(clock.Ticks64th(), midi.NoteOff(0, c))
-	}
-
-	// end
 	tr.Close(0)
 	s.Add(tr)
 	s.WriteFile(path + "/bass.mid")
