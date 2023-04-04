@@ -19,7 +19,7 @@ func MkMelody(path string, key string) {
 	note := uint8(0)
 	tick := uint32(0)
 	n := byte(69)
-	length := 16
+	length := 64
 
 	for {
 	L:
