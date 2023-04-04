@@ -1,7 +1,6 @@
 package instruments
 
 import (
-	"fmt"
 	"math/rand"
 
 	"gitlab.com/gomidi/midi/v2"
@@ -76,11 +75,6 @@ func keyNoteMelody(key string) uint8 {
 			note = uint8(i)
 			break
 		}
-	}
-
-	if note == 0 {
-		fmt.Println("入力された音階名が不正です")
-		return 0
 	}
 
 	return note
