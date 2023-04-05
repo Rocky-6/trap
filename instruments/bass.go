@@ -80,7 +80,7 @@ func keyNoteBass(key string) uint8 {
 
 	for i, noteName := range noteNames {
 		if key == noteName {
-			note = uint8(i) + 24
+			note = uint8(i) + midi.C(5)
 			break
 		}
 	}
