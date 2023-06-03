@@ -8,7 +8,7 @@ import (
 	"gitlab.com/gomidi/midi/v2/smf"
 )
 
-func MkMelody(path string, key string) ([]byte, error) {
+func MkMelody(key string) ([]byte, error) {
 	clock := smf.MetricTicks(96)
 	s := smf.New()
 	s.TimeFormat = clock
