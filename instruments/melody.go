@@ -1,19 +1,20 @@
 package instruments
 
 import (
+	"bytes"
 	"math/rand"
 
 	"gitlab.com/gomidi/midi/v2"
 	"gitlab.com/gomidi/midi/v2/smf"
 )
 
-func MkMelody(path string, key string) {
+func MkMelody(path string, key string) ([]byte, error) {
 	clock := smf.MetricTicks(96)
 	s := smf.New()
 	s.TimeFormat = clock
 	tr := smf.Track{}
 	tr.Add(0, smf.MetaMeter(4, 4))
-	tr.Add(0, smf.MetaTempo(70))
+	tr.Add(0, smf.MetaTempo(140))
 
 	key_note := keyNoteMelody(key)
 	note := uint8(0)
@@ -62,7 +63,14 @@ func MkMelody(path string, key string) {
 	}
 	tr.Close(0)
 	s.Add(tr)
-	s.WriteFile(path + "/melody.mid")
+
+	buf := new(bytes.Buffer)
+	_, err := s.WriteTo(buf)
+	if err != nil {
+		return nil, err
+	}
+
+	return buf.Bytes(), nil
 }
 
 func keyNoteMelody(key string) uint8 {

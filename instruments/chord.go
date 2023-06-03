@@ -1,6 +1,7 @@
 package instruments
 
 import (
+	"bytes"
 	"fmt"
 	"regexp"
 	"sort"
@@ -9,13 +10,13 @@ import (
 	"gitlab.com/gomidi/midi/v2/smf"
 )
 
-func MkChord(path string, key string, cp [4]string) {
+func MkChord(key string, cp [4]string) ([]byte, error) {
 	clock := smf.MetricTicks(96)
 	s := smf.New()
 	s.TimeFormat = clock
 	tr := smf.Track{}
 	tr.Add(0, smf.MetaMeter(4, 4))
-	tr.Add(0, smf.MetaTempo(70))
+	tr.Add(0, smf.MetaTempo(140))
 
 	// start
 	for j := 0; j < 2; j++ {
@@ -39,7 +40,14 @@ func MkChord(path string, key string, cp [4]string) {
 
 	tr.Close(0)
 	s.Add(tr)
-	s.WriteFile(path + "/chord.mid")
+
+	buf := new(bytes.Buffer)
+	_, err := s.WriteTo(buf)
+	if err != nil {
+		return nil, err
+	}
+
+	return buf.Bytes(), nil
 }
 
 func chordNote(keyNoteChord uint8, degree_name string) []uint8 {

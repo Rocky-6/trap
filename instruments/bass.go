@@ -1,19 +1,20 @@
 package instruments
 
 import (
+	"bytes"
 	"fmt"
 
 	"gitlab.com/gomidi/midi/v2"
 	"gitlab.com/gomidi/midi/v2/smf"
 )
 
-func MkBass(path string, key string, cp [4]string) {
+func MkBass(key string, cp [4]string) ([]byte, error) {
 	clock := smf.MetricTicks(96)
 	s := smf.New()
 	s.TimeFormat = clock
 	tr := smf.Track{}
 	tr.Add(0, smf.MetaMeter(4, 4))
-	tr.Add(0, smf.MetaTempo(70))
+	tr.Add(0, smf.MetaTempo(140))
 
 	// start
 	c := bassNote(keyNoteBass(key), cp[0])
@@ -38,7 +39,14 @@ func MkBass(path string, key string, cp [4]string) {
 
 	tr.Close(0)
 	s.Add(tr)
-	s.WriteFile(path + "/bass.mid")
+
+	buf := new(bytes.Buffer)
+	_, err := s.WriteTo(buf)
+	if err != nil {
+		return nil, err
+	}
+
+	return buf.Bytes(), nil
 }
 
 func bassNote(keyNoteChord uint8, degree_name string) uint8 {
